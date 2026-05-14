@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>منصة الطالب الجامعية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- قسم تسجيل الدخول -->
+    <div class="login-container" id="loginPage">
+        <form class="login-form">
+            <h2>تسجيل الدخول</h2>
+            <div class="input-group">
+                <label>اسم المستخدم</label>
+                <input type="text" placeholder="أدخل اسم المستخدم" required>
+            </div>
+            <div class="input-group">
+                <label>كلمة المرور</label>
+                <input type="password" placeholder="أدخل كلمة المرور" required>
+            </div>
+            <button type="button" onclick="showDashboard()">دخول</button>
+        </form>
+    </div>
+
+    <!-- لوحة تحكم الطالب (تظهر بعد الدخول) -->
+    <div class="dashboard-container" id="dashboardPage" style="display: none;">
+        <header>
+            <h1>أهلاً بك، محمد خالد</h1>
+            <button class="logout-btn">تسجيل خروج</button>
+        </header>
+
+        <!-- كروت الإحصائيات -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>المعدل التراكمي (GPA)</h3>
+                <p class="value">3.75</p>
+            </div>
+            <div class="stat-card">
+                <h3>المواد المجتازة</h3>
+                <p class="value">10 مواد</p>
+            </div>
+            <div class="stat-card">
+                <h3>الساعات المسجلة</h3>
+                <p class="value">18 ساعة</p>
+            </div>
+        </div>
+
+        <!-- قسم تسجيل المواد -->
+        <div class="registration-section">
+            <h2>تسجيل المواد للترم الحالي</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>كود المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات</th>
+                        <th>اختيار</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CS101</td>
+                        <td>برمجة الحاسب</td>
+                        <td>3</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>IS202</td>
+                        <td>نظم المعلومات</td>
+                        <td>3</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>MA105</td>
+                        <td>رياضيات متقدمة</td>
+                        <td>2</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="save-btn">تأكيد تسجيل المواد</button>
+        </div>
+    </div>
+
+    <script>
+        function showDashboard() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'block';
+        }
+    </script>
+    <style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* تصميم صفحة الدخول */
+.login-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 { text-align: center; color: #1a73e8; }
+
+.input-group { margin-bottom: 1.5rem; }
+.input-group label { display: block; margin-bottom: 0.5rem; }
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* تصميم لوحة التحكم */
+.dashboard-container {
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f2f5;
+    margin-bottom: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #e8f0fe;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-card h3 { margin: 0; font-size: 0.9rem; color: #555; }
+.stat-card .value { font-size: 2rem; font-weight: bold; color: #1a73e8; margin-top: 0.5rem; }
+
+/* الجدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+table th { background: #f8f9fa; }
+
+.save-btn {
+    margin-top: 1.5rem;
+    background: #34a853;
+    width: auto;
+    padding: 0.8rem 2rem;
+}
+
+.logout-btn {
+    background: #d93025;
+    width: auto;
+    padding: 0.5rem 1rem;
+}
+    </style>
+</body>
+</html>
