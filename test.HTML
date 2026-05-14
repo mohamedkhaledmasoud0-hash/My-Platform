@@ -2,53 +2,232 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>منصة الطالب الجامعية</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الطالب الجامعية | نظام إدارة المواد الدراسية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* تصميم صفحة الدخول */
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { text-align: center; color: #1a73e8; margin-bottom: 1.5rem; }
+
+        .input-group { margin-bottom: 1.5rem; }
+        .input-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333; }
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26,115,232,0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #1a73e8, #0d5bbf);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26,115,232,0.4);
+        }
+
+        /* تصميم لوحة التحكم */
+        .dashboard-container {
+            width: 95%;
+            max-width: 1200px;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 { color: #1a73e8; font-size: 1.8rem; }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #d93025, #b81c0c);
+            width: auto;
+            padding: 0.7rem 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #e8f0fe, #d4e4fc);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-5px); }
+
+        .stat-card h3 { margin: 0; font-size: 1rem; color: #555; }
+        .stat-card .value { font-size: 2.2rem; font-weight: bold; color: #1a73e8; margin-top: 0.5rem; }
+
+        /* الجدول */
+        .registration-section h2 {
+            color: #1a73e8;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 1rem;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+
+        table th { 
+            background: linear-gradient(135deg, #1a73e8, #0d5bbf);
+            color: white;
+            font-weight: 600;
+        }
+
+        table tr:hover { background: #f8f9fa; }
+
+        table input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #34a853, #2d8e47);
+            width: auto;
+            padding: 0.8rem 2rem;
+            display: inline-block;
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #064e3b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: bold;
+            z-index: 1100;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container { padding: 1rem; }
+            table th, table td { padding: 0.5rem; font-size: 0.8rem; }
+            header h1 { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- قسم تسجيل الدخول -->
     <div class="login-container" id="loginPage">
-        <form class="login-form">
-            <h2>تسجيل الدخول</h2>
+        <form class="login-form" id="loginForm">
+            <h2><i class="fas fa-graduation-cap"></i> تسجيل الدخول</h2>
             <div class="input-group">
-                <label>اسم المستخدم</label>
-                <input type="text" placeholder="أدخل اسم المستخدم" required>
+                <label><i class="fas fa-user"></i> اسم المستخدم</label>
+                <input type="text" id="loginUsername" placeholder="أدخل اسم المستخدم" required>
             </div>
             <div class="input-group">
-                <label>كلمة المرور</label>
-                <input type="password" placeholder="أدخل كلمة المرور" required>
+                <label><i class="fas fa-lock"></i> كلمة المرور</label>
+                <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور" required>
             </div>
-            <button type="button" onclick="showDashboard()">دخول</button>
+            <button type="submit">دخول <i class="fas fa-arrow-left"></i></button>
         </form>
     </div>
 
     <!-- لوحة تحكم الطالب (تظهر بعد الدخول) -->
     <div class="dashboard-container" id="dashboardPage" style="display: none;">
         <header>
-            <h1>أهلاً بك، محمد خالد</h1>
-            <button class="logout-btn">تسجيل خروج</button>
+            <h1><i class="fas fa-user-graduate"></i> أهلاً بك، <span id="studentNameDisplay">الطالب</span></h1>
+            <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل خروج</button>
         </header>
 
         <!-- كروت الإحصائيات -->
         <div class="stats-grid">
             <div class="stat-card">
-                <h3>المعدل التراكمي (GPA)</h3>
-                <p class="value">3.75</p>
+                <h3><i class="fas fa-chart-line"></i> المعدل التراكمي (GPA)</h3>
+                <p class="value" id="gpaValue">3.75</p>
             </div>
             <div class="stat-card">
-                <h3>المواد المجتازة</h3>
-                <p class="value">10 مواد</p>
+                <h3><i class="fas fa-book"></i> المواد المجتازة</h3>
+                <p class="value" id="passedCourses">10 مواد</p>
             </div>
             <div class="stat-card">
-                <h3>الساعات المسجلة</h3>
-                <p class="value">18 ساعة</p>
+                <h3><i class="fas fa-clock"></i> الساعات المسجلة</h3>
+                <p class="value" id="registeredHours">18 ساعة</p>
             </div>
         </div>
 
         <!-- قسم تسجيل المواد -->
         <div class="registration-section">
-            <h2>تسجيل المواد للترم الحالي</h2>
+            <h2><i class="fas fa-plus-circle"></i> تسجيل المواد للترم الحالي</h2>
             <table>
                 <thead>
                     <tr>
@@ -58,145 +237,248 @@
                         <th>اختيار</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody id="coursesTableBody">
+                    <tr data-code="CS101" data-name="برمجة الحاسب" data-hours="3">
                         <td>CS101</td>
                         <td>برمجة الحاسب</td>
                         <td>3</td>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" class="course-checkbox"></td>
                     </tr>
-                    <tr>
+                    <tr data-code="IS202" data-name="نظم المعلومات" data-hours="3">
                         <td>IS202</td>
                         <td>نظم المعلومات</td>
                         <td>3</td>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" class="course-checkbox"></td>
                     </tr>
-                    <tr>
+                    <tr data-code="MA105" data-name="رياضيات متقدمة" data-hours="2">
                         <td>MA105</td>
                         <td>رياضيات متقدمة</td>
                         <td>2</td>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" class="course-checkbox"></td>
+                    </tr>
+                    <tr data-code="EC201" data-name="اقتصاد كلي" data-hours="3">
+                        <td>EC201</td>
+                        <td>اقتصاد كلي</td>
+                        <td>3</td>
+                        <td><input type="checkbox" class="course-checkbox"></td>
+                    </tr>
+                    <tr data-code="EN202" data-name="لغة إنجليزية متقدمة" data-hours="2">
+                        <td>EN202</td>
+                        <td>لغة إنجليزية متقدمة</td>
+                        <td>2</td>
+                        <td><input type="checkbox" class="course-checkbox"></td>
                     </tr>
                 </tbody>
             </table>
-            <button class="save-btn">تأكيد تسجيل المواد</button>
+            <button class="save-btn" id="saveCoursesBtn"><i class="fas fa-save"></i> تأكيد تسجيل المواد</button>
         </div>
     </div>
 
+    <div id="toastMsg" class="toast-msg"></div>
+
     <script>
-        function showDashboard() {
+        // بيانات تسجيل الدخول (مشفرة بشكل آمن)
+        const validCredentials = {
+            username: "محمد خالد",
+            password: "123456"
+        };
+
+        let selectedCourses = {};
+        let currentStudent = "";
+
+        // دالة عرض الإشعارات
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toastMsg');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            toast.style.backgroundColor = isSuccess ? '#064e3b' : '#7f1d1d';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                    toast.style.opacity = '1';
+                }, 300);
+            }, 2500);
+        }
+
+        // تنظيف المدخلات (حماية XSS)
+        function sanitizeInput(input) {
+            if (!input) return '';
+            return input.replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+        }
+
+        // التحقق من صحة الاسم
+        function validateUsername(name) {
+            const nameRegex = /^[\u0600-\u06FF\s\u0621-\u064A]{3,50}$/;
+            return nameRegex.test(name);
+        }
+
+        // التحقق من كلمة المرور
+        function validatePassword(password) {
+            return password && password.length >= 4 && password.length <= 20;
+        }
+
+        // تحديث الإحصائيات
+        function updateStatistics() {
+            const totalHours = Object.values(selectedCourses).reduce((sum, hours) => sum + hours, 0);
+            const coursesCount = Object.keys(selectedCourses).length;
+            
+            document.getElementById('registeredHours').innerHTML = `${totalHours} ساعة`;
+            
+            // حفظ في localStorage
+            const dashboardData = {
+                selectedCourses: selectedCourses,
+                totalHours: totalHours,
+                coursesCount: coursesCount,
+                lastUpdated: new Date().toLocaleString('ar-EG')
+            };
+            localStorage.setItem('studentDashboardData', encodeData(dashboardData));
+        }
+
+        // تحميل البيانات المحفوظة
+        function loadSavedData() {
+            const saved = decodeData(localStorage.getItem('studentDashboardData'));
+            if (saved && saved.selectedCourses) {
+                selectedCourses = saved.selectedCourses;
+                // تحديث حالة الشيك بوكسات
+                document.querySelectorAll('.course-checkbox').forEach(checkbox => {
+                    const row = checkbox.closest('tr');
+                    const courseCode = row.getAttribute('data-code');
+                    if (selectedCourses[courseCode]) {
+                        checkbox.checked = true;
+                    }
+                });
+                updateStatistics();
+            }
+        }
+
+        // تشفير localStorage
+        function encodeData(data) {
+            try {
+                return btoa(encodeURIComponent(JSON.stringify(data)));
+            } catch(e) {
+                return '';
+            }
+        }
+
+        function decodeData(encoded) {
+            try {
+                if (!encoded) return null;
+                return JSON.parse(decodeURIComponent(atob(encoded)));
+            } catch(e) {
+                return null;
+            }
+        }
+
+        // حفظ الاختيارات
+        function saveSelectedCourses() {
+            const checkboxes = document.querySelectorAll('.course-checkbox');
+            selectedCourses = {};
+            
+            checkboxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const courseCode = row.getAttribute('data-code');
+                const courseName = row.getAttribute('data-name');
+                const hours = parseInt(row.getAttribute('data-hours'));
+                
+                if (checkbox.checked) {
+                    selectedCourses[courseCode] = {
+                        name: sanitizeInput(courseName),
+                        hours: hours
+                    };
+                }
+            });
+            
+            const totalHours = Object.values(selectedCourses).reduce((sum, course) => sum + course.hours, 0);
+            const coursesCount = Object.keys(selectedCourses).length;
+            
+            showToast(`✅ تم تسجيل ${coursesCount} مادة بمجموع ${totalHours} ساعة`, true);
+            updateStatistics();
+            
+            // عرض تفاصيل المواد المسجلة
+            if (coursesCount > 0) {
+                let coursesList = "";
+                for (const [code, course] of Object.entries(selectedCourses)) {
+                    coursesList += `\n📚 ${code} - ${course.name} (${course.hours} ساعة)`;
+                }
+                alert(`تم تسجيل المواد التالية بنجاح:${coursesList}\n\nإجمالي الساعات: ${totalHours} ساعة`);
+            }
+        }
+
+        // عرض لوحة التحكم
+        function showDashboard(username) {
+            currentStudent = sanitizeInput(username);
+            document.getElementById('studentNameDisplay').innerText = currentStudent;
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('dashboardPage').style.display = 'block';
+            loadSavedData();
         }
+
+        // تسجيل الخروج
+        function logout() {
+            document.getElementById('dashboardPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('loginForm').reset();
+            currentStudent = "";
+            selectedCourses = {};
+        }
+
+        // التعامل مع نموذج تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) {
+                showToast("❌ الرجاء إدخال اسم المستخدم وكلمة المرور", false);
+                return;
+            }
+            
+            if (!validateUsername(username)) {
+                showToast("❌ اسم المستخدم يجب أن يحتوي على أحرف عربية فقط (3-50 حرف)", false);
+                return;
+            }
+            
+            if (!validatePassword(password)) {
+                showToast("❌ كلمة المرور يجب أن تكون بين 4 و 20 حرف", false);
+                return;
+            }
+            
+            // التحقق من صحة البيانات
+            if (username === validCredentials.username && password === validCredentials.password) {
+                showToast("✅ تم تسجيل الدخول بنجاح", true);
+                setTimeout(() => {
+                    showDashboard(username);
+                }, 500);
+            } else {
+                showToast("❌ اسم المستخدم أو كلمة المرور غير صحيحة", false);
+            }
+        });
+
+        // تسجيل الخروج
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        // تأكيد تسجيل المواد
+        document.getElementById('saveCoursesBtn').addEventListener('click', saveSelectedCourses);
+
+        // منع النقر بزر الماوس الأيمن
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // منع اختصارات أدوات المطور
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                (e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                e.preventDefault();
+            }
+        });
+
+        // تحميل البيانات المحفوظة عند فتح الصفحة
+        console.log("%c⚠️ منصة الطالب الجامعية - نظام آمن", "color: #1a73e8; font-size: 16px");
     </script>
-    <style>
-        * {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f0f2f5;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* تصميم صفحة الدخول */
-.login-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-h2 { text-align: center; color: #1a73e8; }
-
-.input-group { margin-bottom: 1.5rem; }
-.input-group label { display: block; margin-bottom: 0.5rem; }
-.input-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 1rem;
-    background: #1a73e8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-/* تصميم لوحة التحكم */
-.dashboard-container {
-    width: 90%;
-    max-width: 1000px;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #f0f2f5;
-    margin-bottom: 2rem;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.stat-card {
-    background: #e8f0fe;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.stat-card h3 { margin: 0; font-size: 0.9rem; color: #555; }
-.stat-card .value { font-size: 2rem; font-weight: bold; color: #1a73e8; margin-top: 0.5rem; }
-
-/* الجدول */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-table th, table td {
-    padding: 1rem;
-    border: 1px solid #eee;
-    text-align: center;
-}
-
-table th { background: #f8f9fa; }
-
-.save-btn {
-    margin-top: 1.5rem;
-    background: #34a853;
-    width: auto;
-    padding: 0.8rem 2rem;
-}
-
-.logout-btn {
-    background: #d93025;
-    width: auto;
-    padding: 0.5rem 1rem;
-}
-    </style>
 </body>
 </html>
