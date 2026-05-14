@@ -45,7 +45,6 @@
         nav ul li a { text-decoration: none; color: inherit; font-weight: 700; transition: 0.2s; }
         nav ul li a:hover { color: var(--primary); }
 
-        /* ---------- Hero Section - الشعار الجديد ---------- */
         .hero {
             min-height: 75vh;
             display: flex;
@@ -59,141 +58,30 @@
             padding: 60px 20px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-        }
-        
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; }
         .hero h1 span { color: var(--primary); }
+        .hero-tagline { font-size: 2rem; font-weight: 800; color: var(--primary); margin: 1rem 0; }
+        .hero-sub { font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin-bottom: 2rem; }
+        .hero-badge { background: rgba(255, 140, 0, 0.1); padding: 0.5rem 1.5rem; border-radius: 60px; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; display: inline-block; }
 
-        .hero-tagline {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 1rem 0;
-        }
-
-        .hero-sub {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-badge {
-            background: rgba(255, 140, 0, 0.1);
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        /* ---------- Filter Tabs (الأقسام) ---------- */
-        .tabs-container {
-            padding: 2rem 10% 0;
-            text-align: center;
-            position: sticky;
-            top: 90px;
-            z-index: 900;
-            background: #f8fafc;
-        }
-
-        .tabs-wrapper {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 15px 5px;
-            justify-content: center;
-            scrollbar-width: none;
-        }
-
+        .tabs-container { padding: 2rem 10% 0; text-align: center; position: sticky; top: 90px; z-index: 900; background: #f8fafc; }
+        .tabs-wrapper { display: flex; gap: 12px; overflow-x: auto; padding: 15px 5px; justify-content: center; scrollbar-width: none; }
         .tabs-wrapper::-webkit-scrollbar { display: none; }
+        .tab-btn { padding: 12px 25px; background: white; border: 2px solid var(--border-light); border-radius: 50px; font-family: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; transition: 0.3s; font-size: 1rem; }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3); }
 
-        .tab-btn {
-            padding: 12px 25px;
-            background: white;
-            border: 2px solid var(--border-light);
-            border-radius: 50px;
-            font-family: inherit;
-            font-weight: 700;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: 0.3s;
-            font-size: 1rem;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
-        }
-
-        /* ---------- Teachers Grid ---------- */
         .teachers { padding: 2rem 10% 6rem; text-align: center; }
-        
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .teacher-card {
-            background: var(--card-bg);
-            border-radius: 35px;
-            padding: 2.5rem 1.5rem;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: var(--card-shadow);
-            border: 3px solid transparent; 
-            cursor: pointer;
-        }
-
-        @keyframes fadeInCard {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .teacher-card { background: var(--card-bg); border-radius: 35px; padding: 2.5rem 1.5rem; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: var(--card-shadow); border: 3px solid transparent; cursor: pointer; }
+        @keyframes fadeInCard { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .teacher-card.show { animation: fadeInCard 0.5s ease forwards; }
-
-        .teacher-card.selected-active {
-            border-color: var(--primary);
-            background: #fffcf8;
-            transform: translateY(-10px);
-        }
-
-        .teacher-img {
-            width: 90px; height: 90px;
-            background: #f1f5f9;
-            border-radius: 50%;
-            margin: 0 auto 1.2rem;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 3rem;
-        }
-
+        .teacher-card.selected-active { border-color: var(--primary); background: #fffcf8; transform: translateY(-10px); }
+        .teacher-img { width: 90px; height: 90px; background: #f1f5f9; border-radius: 50%; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
         .teacher-card h3 { font-size: 1.4rem; margin-bottom: 0.3rem; }
         .teacher-card p { color: var(--primary); font-weight: 700; }
+        .select-btn-ui { margin-top: 1.5rem; padding: 0.8rem; border-radius: 50px; background: #f8f9fc; border: 2px solid var(--border-light); font-weight: 800; transition: 0.2s; }
+        .teacher-card.selected-active .select-btn-ui { background: var(--primary); color: white; border-color: var(--primary); }
 
-        .select-btn-ui {
-            margin-top: 1.5rem;
-            padding: 0.8rem;
-            border-radius: 50px;
-            background: #f8f9fc;
-            border: 2px solid var(--border-light);
-            font-weight: 800;
-            transition: 0.2s;
-        }
-
-        .teacher-card.selected-active .select-btn-ui {
-            background: var(--primary); 
-            color: white; 
-            border-color: var(--primary);
-        }
-
-        /* ---------- Registration Section ---------- */
         .registration { padding: 5rem 10%; background: white; }
         .form-container { max-width: 600px; margin: 0 auto; padding: 3rem; border-radius: 40px; box-shadow: var(--card-shadow); background: white; }
         .form-container h2 { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; }
@@ -202,7 +90,6 @@
         .btn-submit { width: 100%; padding: 1rem; background: var(--primary); color: white; border: none; border-radius: 50px; font-weight: 900; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
         .btn-submit:hover { background: var(--primary-dark); transform: scale(0.98); }
 
-        /* ---------- Developer Footer (لون مختلف وجذاب) ---------- */
         .designer-section { 
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             padding: 80px 10%; 
@@ -212,35 +99,11 @@
             text-align: center;
             box-shadow: 0 -5px 30px rgba(0, 212, 255, 0.2);
         }
-        
-        .designer-section h2 { 
-            color: var(--dev-color); 
-            font-size: 2.5rem; 
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-        
+        .designer-section h2 { color: var(--dev-color); font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
         .designer-section p { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .designer-contact {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .designer-contact a {
-            color: var(--dev-color);
-            text-decoration: none;
-            background: rgba(0, 212, 255, 0.1);
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            transition: 0.2s;
-            font-weight: 600;
-        }
-        .designer-contact a:hover {
-            background: var(--dev-color);
-            color: #0f172a;
-        }
+        .designer-contact { margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .designer-contact a { color: var(--dev-color); text-decoration: none; background: rgba(0, 212, 255, 0.1); padding: 0.5rem 1.2rem; border-radius: 40px; transition: 0.2s; font-weight: 600; }
+        .designer-contact a:hover { background: var(--dev-color); color: #0f172a; }
 
         .final-footer { background: #0a101e; color: #64748b; padding: 2rem; text-align: center; }
 
@@ -278,31 +141,25 @@
         </nav>
     </header>
 
-    <!-- Hero Section مع الشعار الجديد والنص الدعائي -->
     <section id="home" class="hero">
         <div class="hero-badge">
             <i class="fas fa-star"></i> الاختيار الأول لأبطال الثانوية
         </div>
         <h1>منصة <span>المايسترو</span> التعليمية</h1>
-        <div class="hero-tagline">
-            تصفح المدرسين حسب المادة العلمية
-        </div>
-        <p class="hero-sub">
-            نخبة من أقوى مدرسي مصر في مكان واحد.. اختر من يناسبك
-        </p>
+        <div class="hero-tagline">تصفح المدرسين حسب المادة العلمية</div>
+        <p class="hero-sub">نخبة من أقوى مدرسي مصر في مكان واحد.. اختر من يناسبك</p>
     </section>
 
-    <!-- أقسام المواد -->
     <div class="tabs-container">
         <div class="tabs-wrapper" id="tabsWrapper">
-            <button class="tab-btn active" onclick="filterTeachers('الكل', this)">🌟 الكل</button>
-            <button class="tab-btn" onclick="filterTeachers('فيزياء', this)">⚛️ فيزياء</button>
-            <button class="tab-btn" onclick="filterTeachers('كيمياء', this)">🧪 كيمياء</button>
-            <button class="tab-btn" onclick="filterTeachers('رياضيات', this)">📐 رياضيات</button>
-            <button class="tab-btn" onclick="filterTeachers('لغة عربية', this)">📖 عربي</button>
-            <button class="tab-btn" onclick="filterTeachers('لغة إنجليزية', this)">🇬🇧 إنجليزي</button>
-            <button class="tab-btn" onclick="filterTeachers('أحياء', this)">🧬 أحياء</button>
-            <button class="tab-btn" onclick="filterTeachers('أخرى', this)">✨ مواد أخرى</button>
+            <button class="tab-btn active" data-filter="الكل">🌟 الكل</button>
+            <button class="tab-btn" data-filter="فيزياء">⚛️ فيزياء</button>
+            <button class="tab-btn" data-filter="كيمياء">🧪 كيمياء</button>
+            <button class="tab-btn" data-filter="رياضيات">📐 رياضيات</button>
+            <button class="tab-btn" data-filter="لغة عربية">📖 عربي</button>
+            <button class="tab-btn" data-filter="لغة إنجليزية">🇬🇧 إنجليزي</button>
+            <button class="tab-btn" data-filter="أحياء">🧬 أحياء</button>
+            <button class="tab-btn" data-filter="أخرى">✨ مواد أخرى</button>
         </div>
     </div>
 
@@ -330,13 +187,12 @@
         </div>
     </section>
 
-    <!-- قسم مصمم المنصة - بياناتي (لون مختلف وجذاب) -->
     <section class="designer-section">
         <h2><i class="fas fa-laptop-code"></i> المهندس محمد خالد مسعود</h2>
         <p>مطور ومصمم المنصة | خبرة في أنظمة التعليم التفاعلية</p>
         <div class="designer-contact">
             <a href="https://wa.me/201203667177" target="_blank"><i class="fab fa-whatsapp"></i> 01203667177</a>
-            <a href="https://www.linkedin.com/in/mohamed-khaled-masoud-9492bb395?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>            
+            <a href="https://www.linkedin.com/in/mohamed-khaled-masoud-9492bb395" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>            
             <a href="https://github.com/mohamedkhaledmasoud0-hash" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </div>
         <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.7;">
@@ -376,10 +232,72 @@
         ];
 
         let selections = {};
+        let isSubmitting = false;
+        let submissionCount = 0;
+        let lastSubmissionTime = 0;
+        const SUBMIT_LIMIT = 3;
+        const TIME_WINDOW = 60000;
+
+        // دالة تنظيف المدخلات (حماية XSS)
+        function sanitizeInput(input) {
+            if (!input) return '';
+            return input.replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+        }
+
+        // التحقق من الاسم (عربي فقط)
+        function validateName(name) {
+            const nameRegex = /^[\u0600-\u06FF\s\u0621-\u064A]{3,50}$/;
+            return nameRegex.test(name);
+        }
+
+        // التحقق من رقم الهاتف المصري
+        function validatePhone(phone) {
+            const phoneRegex = /^(\+20|0)?1[0125][0-9]{8}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // التحقق من عدد المحاولات (Rate Limiting)
+        function canSubmit() {
+            const now = Date.now();
+            if (now - lastSubmissionTime > TIME_WINDOW) submissionCount = 0;
+            if (submissionCount >= SUBMIT_LIMIT) return false;
+            submissionCount++;
+            lastSubmissionTime = now;
+            return true;
+        }
+
+        // تشفير localStorage
+        function encodeData(data) {
+            return btoa(encodeURIComponent(JSON.stringify(data)));
+        }
+
+        function decodeData(encoded) {
+            try {
+                return JSON.parse(decodeURIComponent(atob(encoded)));
+            } catch(e) {
+                return [];
+            }
+        }
+
+        // مسح البيانات القديمة
+        const MAX_AGE = 30 * 24 * 60 * 60 * 1000;
+        function cleanOldData() {
+            let all = decodeData(localStorage.getItem('maestroRegistrations') || '[]');
+            const now = new Date().getTime();
+            const filtered = all.filter(item => {
+                const itemDate = new Date(item.date).getTime();
+                return (now - itemDate) < MAX_AGE;
+            });
+            localStorage.setItem('maestroRegistrations', encodeData(filtered));
+        }
 
         function showToast(message, isSuccess = true) {
             const toast = document.getElementById('toastMsg');
-            toast.textContent = message;
+            toast.textContent = sanitizeInput(message);
             toast.style.display = 'block';
             toast.style.backgroundColor = isSuccess ? '#064e3b' : '#7f1d1d';
             setTimeout(() => {
@@ -405,9 +323,9 @@
                 card.className = `teacher-card show ${isSelected ? 'selected-active' : ''}`;
                 card.innerHTML = `
                     <div class="teacher-img">${teacher.icon}</div>
-                    <h3>${teacher.name}</h3>
-                    <p>${teacher.subject}</p>
-                    <div class="select-btn-ui">${isSelected ? '✅ تم الاختيار' : '➕ اختر المدرس'}</div>
+                    <h3>${sanitizeInput(teacher.name)}</h3>
+                    <p>${sanitizeInput(teacher.subject)}</p>
+                    <div class="select-btn-ui">${isSelected ? '✅ تم الاختيار' : ' اختر المدرس'}</div>
                 `;
                 card.onclick = () => toggleSelection(teacher.id, card);
                 grid.appendChild(card);
@@ -424,47 +342,106 @@
             selections[id] = !selections[id];
             card.classList.toggle('selected-active');
             const btn = card.querySelector('.select-btn-ui');
-            btn.innerHTML = selections[id] ? '✅ تم الاختيار' : '➕ اختر المدرس';
+            btn.innerHTML = selections[id] ? '✅ تم الاختيار' : ' اختر المدرس';
             
             const teacherName = teachersList.find(t => t.id === id)?.name;
             showToast(selections[id] ? `✅ تم إضافة ${teacherName}` : `❌ تم إلغاء اختيار ${teacherName}`, selections[id]);
         }
 
+        // حدث أزرار التبويب
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                filterTeachers(filter, this);
+            });
+        });
+
         document.getElementById('studentForm').onsubmit = (e) => {
             e.preventDefault();
-            const count = Object.values(selections).filter(v => v).length;
-            const studentName = document.getElementById('studentName').value.trim();
-            const studentPhone = document.getElementById('studentPhone').value.trim();
-            const studentGrade = document.getElementById('studentGrade').value;
             
+            // منع الإرسال المتكرر
+            if (isSubmitting) {
+                showToast("❌ جاري معالجة طلبك، يرجى الانتظار...", false);
+                return;
+            }
+            
+            // التحقق من عدد المحاولات
+            if (!canSubmit()) {
+                showToast("❌ لقد تجاوزت الحد المسموح من المحاولات. يرجى المحاولة بعد دقيقة.", false);
+                return;
+            }
+            
+            isSubmitting = true;
+            
+            let studentName = document.getElementById('studentName').value.trim();
+            let studentPhone = document.getElementById('studentPhone').value.trim();
+            let studentGrade = document.getElementById('studentGrade').value;
+            
+            // التحقق من صحة البيانات
             if (!studentName || !studentPhone || !studentGrade) {
                 showToast("⚠️ الرجاء ملء جميع البيانات", false);
+                isSubmitting = false;
                 return;
             }
             
+            if (!validateName(studentName)) {
+                showToast("❌ الاسم يجب أن يحتوي على أحرف عربية فقط (3-50 حرف)", false);
+                isSubmitting = false;
+                return;
+            }
+            
+            if (!validatePhone(studentPhone)) {
+                showToast("❌ رقم الهاتف غير صحيح. يجب أن يكون رقم مصري صحيح", false);
+                isSubmitting = false;
+                return;
+            }
+            
+            const count = Object.values(selections).filter(v => v).length;
             if (count === 0) {
                 showToast("❌ برجاء اختيار مدرس واحد على الأقل", false);
+                isSubmitting = false;
                 return;
             }
             
-            const selectedTeachersNames = teachersList.filter(t => selections[t.id]).map(t => t.name).join(', ');
-            alert(`🎉 تم تسجيلك بنجاح في منصة المايسترو 🎉\n\n👤 الطالب: ${studentName}\n📚 الصف: ${studentGrade}\n🏆 عدد المعلمين المختارين: ${count}\n📋 المعلمين: ${selectedTeachersNames}\n\n✅ سيتم التواصل معك قريباً!`);
+            // تنظيف البيانات قبل الاستخدام
+            const cleanName = sanitizeInput(studentName);
+            const cleanPhone = sanitizeInput(studentPhone);
+            const selectedTeachersNames = teachersList.filter(t => selections[t.id]).map(t => sanitizeInput(t.name)).join(', ');
+            
+            alert(`🎉 تم تسجيلك بنجاح في منصة المايسترو 🎉\n\n👤 الطالب: ${cleanName}\n📚 الصف: ${studentGrade}\n🏆 عدد المعلمين المختارين: ${count}\n📋 المعلمين: ${selectedTeachersNames}\n\n✅ سيتم التواصل معك قريباً!`);
             showToast(`✅ تم تسجيلك مع ${count} معلم/معلمين`, true);
             
-            // حفظ في localStorage
+            // حفظ في localStorage بشكل آمن
             const registrationData = {
-                studentName, studentPhone, studentGrade,
-                selectedTeachers: teachersList.filter(t => selections[t.id]).map(t => ({ name: t.name, subject: t.subject })),
+                studentName: cleanName,
+                studentPhone: cleanPhone,
+                studentGrade: sanitizeInput(studentGrade),
+                selectedTeachers: teachersList.filter(t => selections[t.id]).map(t => ({ name: sanitizeInput(t.name), subject: sanitizeInput(t.subject) })),
                 date: new Date().toLocaleString('ar-EG')
             };
-            let all = JSON.parse(localStorage.getItem('maestroRegistrations')) || [];
+            let all = decodeData(localStorage.getItem('maestroRegistrations') || '[]');
             all.push(registrationData);
-            localStorage.setItem('maestroRegistrations', JSON.stringify(all));
+            localStorage.setItem('maestroRegistrations', encodeData(all));
             
-            // إعادة تعيين الفورم فقط
+            // إعادة تعيين الفورم
             document.getElementById('studentForm').reset();
+            
+            isSubmitting = false;
         };
 
+        // منع النقر بزر الماوس الأيمن
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // منع اختصارات أدوات المطور
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+        
+        // مسح البيانات القديمة عند التحميل
+        cleanOldData();
+        
         // التهيئة
         renderTeachers();
     </script>
