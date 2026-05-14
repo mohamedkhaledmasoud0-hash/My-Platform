@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>الأستاذ طاهر زكريا | منصة النابغة التعليمية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a2a, #1a1a3e, #0d0d2b);
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1a3a;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e67e22;
+            border-radius: 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 10, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #e67e22;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #e67e22;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #f0f0f0;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            padding: 8px 0;
+        }
+
+        nav ul li a:hover {
+            color: #e67e22;
+        }
+
+        .hero-tribute {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6% 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-tribute::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(230,126,34,0.15) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 850px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            padding: 50px 40px;
+            border-radius: 60px 30px 60px 30px;
+            border: 1px solid rgba(230,126,34,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .teacher-badge {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 .teacher-name {
+            color: #e67e22;
+            font-size: 3rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230,126,34,0.4);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #e67e22, #f39c12);
+            display: block;
+            margin: 15px auto 0;
+            border-radius: 4px;
+        }
+
+        .stage-selector {
+            padding: 50px 6% 20px;
+            text-align: center;
+        }
+
+        .stage-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stage-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(230,126,34,0.5);
+            padding: 14px 45px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-family: 'Cairo', sans-serif;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stage-btn.active {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            border-color: transparent;
+            box-shadow: 0 5px 20px rgba(230,126,34,0.5);
+        }
+
+        .stage-btn:hover {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            transform: scale(1.02);
+        }
+
+        .subjects-sections {
+            padding: 40px 6% 70px;
+        }
+
+        .subject-category {
+            margin-bottom: 50px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 30px;
+            padding: 20px;
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(230,126,34,0.5);
+        }
+
+        .subject-header i {
+            font-size: 2rem;
+            color: #e67e22;
+        }
+
+        .subject-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .teachers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: flex-start;
+        }
+
+        .teacher-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            width: 260px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230,126,34,0.3);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .teacher-card.selected {
+            border: 2px solid #27ae60;
+            background: rgba(39,174,96,0.15);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            border-color: #e67e22;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .teacher-img {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .teacher-card h4 {
+            font-size: 1.2rem;
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+
+        .teacher-card .subject-name {
+            color: #f39c12;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .teacher-card .desc {
+            font-size: 0.75rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .check-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255,255,255,0.2);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #aaa;
+            border: 2px solid #aaa;
+            transition: all 0.2s ease;
+        }
+
+        .teacher-card.selected .check-badge {
+            background: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        .teacher-card.selected .check-badge i {
+            display: block;
+        }
+
+        .check-badge i {
+            display: none;
+        }
+
+        .master-section {
+            padding: 60px 8%;
+            background: rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .master-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 40px 30px;
+            border: 1px solid rgba(230,126,34,0.3);
+        }
+
+        .master-img {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .master-card h3 {
+            font-size: 2rem;
+            color: #e67e22;
+        }
+
+        .register-form-section {
+            padding: 60px 8%;
+        }
+
+        .form-card {
+            max-width: 550px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 40px 35px;
+            border-radius: 35px;
+            border: 1px solid rgba(230,126,34,0.3);
+        }
+
+        .form-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #e67e22;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 14px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(230,126,34,0.5);
+            background: rgba(0,0,0,0.4);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: #aaa;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: #e67e22;
+        }
+
+        .selected-teachers-container {
+            background: rgba(230,126,34,0.15);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 20px 0;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .selected-teachers-container h4 {
+            color: #f39c12;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .selected-teacher-item {
+            background: rgba(0,0,0,0.4);
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            border-right: 3px solid #27ae60;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 14px;
+            width: 100%;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(230,126,34,0.4);
+        }
+
+        .dev-footer-modern {
+            background: linear-gradient(to bottom, #07071e, #0a0a25);
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-top: 2px solid #00d2ff;
+        }
+
+        .dev-title-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .dev-title-box h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00d2ff;
+        }
+
+        .dev-title-box i {
+            font-size: 1.8rem;
+            color: #00d2ff;
+        }
+
+        .dev-subtitle {
+            color: #bbb;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .social-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .social-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 10px 22px;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-item:hover {
+            background: #00d2ff;
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .pricing-tag {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+
+        .final-copyright {
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding-top: 20px;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .hero-content h1 .teacher-name {
+                font-size: 2rem;
+            }
+            .stage-btn {
+                padding: 10px 25px;
+                font-size: 1.1rem;
+            }
+            .teachers-grid {
+                justify-content: center;
+            }
+            .dev-title-box h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">نابغة <span>التعليم</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#teachersArea">المدرسون</a></li>
+                <li><a href="#master">أ. طاهر</a></li>
+                <li><a href="#register">سجل الآن</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-tribute">
+        <div class="hero-content">
+            <div class="teacher-badge">
+                <i class="fas fa-chalkboard"></i> المعلم القدير
+            </div>
+            <h1>
+                تحت إشراف <span class="teacher-name">الأستاذ طاهر زكريا</span>
+            </h1>
+            <p>أقوى فريق من المدرسين لكل المواد في المرحلتين الابتدائية والإعدادية.<br>اختر مرحلتك، واختر مدرسك المفضل من كل مادة!</p>
+            <a href="#teachersArea" class="btn-gold"><i class="fas fa-users"></i> اكتشف المدرسين</a>
+        </div>
+    </section>
+
+    <div id="teachersArea" class="stage-selector">
+        <h2 class="section-title">اختر مرحلتك وشوف فريق المدرسين</h2>
+        <div class="stage-buttons">
+            <button class="stage-btn" id="btnPrimary"><i class="fas fa-child"></i> المرحلة الابتدائية</button>
+            <button class="stage-btn" id="btnPrep"><i class="fas fa-user-graduate"></i> المرحلة الإعدادية</button>
+        </div>
+    </div>
+
+    <div class="subjects-sections" id="subjectsContainer"></div>
+
+    <section id="master" class="master-section">
+        <h2 class="section-title">قائد الفريق <i class="fas fa-crown"></i></h2>
+        <div class="master-card">
+            <div class="master-img">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>الأستاذ / طاهر زكريا</h3>
+            <div style="font-size: 1rem; background:rgba(230,126,34,0.3); display:inline-block; padding:5px 25px; border-radius:30px; margin:12px 0;">المشرف العام وخبير المناهج</div>
+            <p>أكثر من 20 عامًا من العطاء، يشرف على نخبة من أفضل المدرسين في جميع المواد. الطالب يختار مدرسه المفضل من كل مادة على حدة.</p>
+        </div>
+    </section>
+
+    <section id="register" class="register-form-section">
+        <div class="form-card">
+            <h2><i class="fas fa-user-plus"></i> سجل مع مدرسيك المفضلين</h2>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <input type="text" id="studentName" placeholder="الاسم الكامل" required>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="studentPhone" placeholder="رقم الهاتف (واتساب)" required>
+                </div>
+                <div class="input-group">
+                    <select id="gradeLevel" required>
+                        <option value="" disabled selected>اختر المرحلة الدراسية</option>
+                        <option value="المرحلة الابتدائية">📘 المرحلة الابتدائية</option>
+                        <option value="المرحلة الإعدادية">📙 المرحلة الإعدادية</option>
+                    </select>
+                </div>
+                
+                <div class="selected-teachers-container">
+                    <h4><i class="fas fa-check-circle"></i> المدرسون الذين اخترتهم:</h4>
+                    <div id="selectedTeachersList">
+                        <p style="color:#aaa; text-align:center;">لم يتم اختيار أي مدرس بعد</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> سجل الآن</button>
+            </form>
+            <p style="text-align:center; margin-top:18px; color:#aaa; font-size:0.8rem;">✏️ اضغط على أي مدرس في كل قسم لاختياره - يمكنك اختيار مدرس واحد من كل مادة</p>
+        </div>
+    </section>
+
+    <footer class="dev-footer-modern">
+        <div class="dev-info-content">
+            <div class="dev-title-box">
+                <i class="fas fa-laptop-code"></i>
+                <h2>المهندس محمد خالد مسعود</h2>
+            </div>
+            
+            <p class="dev-subtitle">مطور ومصمم المنصة | خبرة في أنظمة التعليم التفاعلية</p>
+
+            <div class="social-links-container">
+                <a href="https://github.com/Mohamed-Khaled-Masoud" class="social-item" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#" class="social-item" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/201203667177" class="social-item" target="_blank">
+                    <i class="fab fa-whatsapp"></i> 01203667177
+                </a>
+            </div>
+
+            <p class="pricing-tag">تصميم احترافي | أداء فائق | أسعار تنافسية</p>
+
+            <div class="final-copyright">
+                <p>© 2026 MAESTRO ACADEMY | جميع الحقوق محفوظة | الاختيار الأول لأبطال الثانوية</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات المدرسين - المرحلة الابتدائية
+        const primarySubjects = {
+            "اللغة العربية": [
+                { name: "أ/ محمد صلاح", icon: "fas fa-book-open", desc: "متخصص في النحو والقراءة" },
+                { name: "أ/ أحمد فتحي", icon: "fas fa-book-open", desc: "خبير في الإملاء والخط" },
+                { name: "أ/ سعاد إبراهيم", icon: "fas fa-book-open", desc: "متخصصة في الأدب والنصوص" }
+            ],
+            "الرياضيات": [
+                { name: "أ/ كريم ياسر", icon: "fas fa-calculator", desc: "خبير تأسيس العمليات الحسابية" },
+                { name: "أ/ حسام الدين", icon: "fas fa-calculator", desc: "متخصص في الهندسة للأطفال" },
+                { name: "أ/ نهاد رشدي", icon: "fas fa-calculator", desc: "خبيرة في الكسور والنسب" }
+            ],
+            "العلوم": [
+                { name: "أ/ دينا عادل", icon: "fas fa-microscope", desc: "شرح العلوم بطريقة شيقة" },
+                { name: "أ/ نورا طارق", icon: "fas fa-microscope", desc: "تجارب علمية مبسطة" },
+                { name: "أ/ إبراهيم سعيد", icon: "fas fa-microscope", desc: "متخصص في النباتات والحيوانات" }
+            ],
+            "اللغة الإنجليزية": [
+                { name: "أ/ شهد مصطفى", icon: "fas fa-language", desc: "تأسيس قوي في المحادثة" },
+                { name: "أ/ عمر وائل", icon: "fas fa-language", desc: "جرامر وقواعد بطريقة سهلة" },
+                { name: "أ/ رنا حسام", icon: "fas fa-language", desc: "متخصصة في الاستماع والنطق" }
+            ],
+            "التربية الدينية": [
+                { name: "أ/ هاني فتحي", icon: "fas fa-mosque", desc: "تحفيظ القرآن والتجويد" },
+                { name: "أ/ سمية جمال", icon: "fas fa-mosque", desc: "التربية الإسلامية والفقه" }
+            ],
+            "المهارات الفنية": [
+                { name: "أ/ منة الله سمير", icon: "fas fa-paintbrush", desc: "تنمية المهارات الإبداعية" },
+                { name: "أ/ مريم عصام", icon: "fas fa-paintbrush", desc: "الرسم والأشغال اليدوية" }
+            ],
+            "الحاسب الآلي": [
+                { name: "أ/ عمرو هشام", icon: "fas fa-laptop", desc: "أساسيات الكمبيوتر" },
+                { name: "أ/ ندى خالد", icon: "fas fa-laptop", desc: "تعليم الطباعة والإنترنت" }
+            ]
+        };
+
+        // بيانات المدرسين - المرحلة الإعدادية
+        const prepSubjects = {
+            "اللغة العربية": [
+                { name: "أ/ أحمد فوزي", icon: "fas fa-book-open", desc: "متخصص في النحو المتقدم" },
+                { name: "أ/ محمود رشدي", icon: "fas fa-book-open", desc: "خبير في الأدب والبلاغة" },
+                { name: "أ/ هبة الله محمد", icon: "fas fa-book-open", desc: "متخصصة في النصوص الأدبية" }
+            ],
+            "الرياضيات": [
+                { name: "أ/ محمد رمضان", icon: "fas fa-square-root-alt", desc: "خبير الجبر والتفاضل" },
+                { name: "أ/ كريم شحاتة", icon: "fas fa-square-root-alt", desc: "متخصص في الهندسة" },
+                { name: "أ/ أسماء ربيع", icon: "fas fa-square-root-alt", desc: "خبيرة في الإحصاء" }
+            ],
+            "العلوم": [
+                { name: "أ/ إسراء وائل", icon: "fas fa-flask", desc: "فيزياء وكيمياء متكامل" },
+                { name: "أ/ دعاء مصطفى", icon: "fas fa-flask", desc: "شرح الأحياء والجيولوجيا" },
+                { name: "أ/ مصطفى كامل", icon: "fas fa-flask", desc: "خبير في الكيمياء التحليلية" }
+            ],
+            "اللغة الإنجليزية": [
+                { name: "أ/ سلمى جمال", icon: "fas fa-language", desc: "جرامر وترجمة متقدمة" },
+                { name: "أ/ رانيا صلاح", icon: "fas fa-language", desc: "مهارات الاستماع والمحادثة" },
+                { name: "أ/ كريم أشرف", icon: "fas fa-language", desc: "متخصص في الأدب الإنجليزي" }
+            ],
+            "الدراسات الاجتماعية": [
+                { name: "أ/ يوسف صلاح", icon: "fas fa-globe-americas", desc: "تاريخ وجغرافيا بأسلوب مبسط" },
+                { name: "أ/ مروة عبدالله", icon: "fas fa-globe-americas", desc: "متخصصة في الخرائط والتاريخ" },
+                { name: "أ/ هشام فريد", icon: "fas fa-globe-americas", desc: "خبير في الجغرافيا السياسية" }
+            ],
+            "التربية الدينية": [
+                { name: "أ/ مريم خالد", icon: "fas fa-mosque", desc: "الفقه والسيرة النبوية" },
+                { name: "أ/ عمر سامي", icon: "fas fa-mosque", desc: "تفسير القرآن والحديث" }
+            ],
+            "الحاسب الآلي": [
+                { name: "أ/ محمد السيد", icon: "fas fa-laptop-code", desc: "برمجة وتكنولوجيا المعلومات" },
+                { name: "أ/ سارة أحمد", icon: "fas fa-laptop-code", desc: "تعليم قواعد البيانات والإنترنت" }
+            ]
+        };
+
+        let selectedTeachers = {};
+        let currentStage = 'primary';
+        let isSubmitting = false;
+        let submissionCount = 0;
+        let lastSubmissionTime = 0;
+        const SUBMIT_LIMIT = 3;
+        const TIME_WINDOW = 60000;
+
+        // دالة تنظيف المدخلات
+        function sanitizeInput(input) {
+            if (!input) return '';
+            return input.replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+        }
+
+        // التحقق من الاسم
+        function validateName(name) {
+            const nameRegex = /^[\u0600-\u06FF\s\u0621-\u064A]{3,50}$/;
+            return nameRegex.test(name);
+        }
+
+        // التحقق من رقم الهاتف
+        function validatePhone(phone) {
+            const phoneRegex = /^(\+20|0)?1[0125][0-9]{8}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // التحقق من عدد المحاولات
+        function canSubmit() {
+            const now = Date.now();
+            if (now - lastSubmissionTime > TIME_WINDOW) submissionCount = 0;
+            if (submissionCount >= SUBMIT_LIMIT) return false;
+            submissionCount++;
+            lastSubmissionTime = now;
+            return true;
+        }
+
+        // تحديث عرض المدرسين المختارين
+        function updateSelectedTeachersDisplay() {
+            const container = document.getElementById('selectedTeachersList');
+            const keys = Object.keys(selectedTeachers);
+            
+            if (keys.length === 0) {
+                container.innerHTML = '<p style="color:#aaa; text-align:center;">لم يتم اختيار أي مدرس بعد</p>';
+                return;
+            }
+            
+            let html = '';
+            for (const [subject, teacherName] of Object.entries(selectedTeachers)) {
+                html += `<div class="selected-teacher-item">
+                            <i class="fas fa-chalkboard-user" style="color:#27ae60;"></i> 
+                            <strong>${subject.replace(/^[^_]+_/, '')}</strong>: ${sanitizeInput(teacherName)}
+                         </div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        // إنشاء بطاقة مدرس
+        function createTeacherCard(teacher, subjectName, subjectKey) {
+            const card = document.createElement('div');
+            card.className = 'teacher-card';
+            if (selectedTeachers[subjectKey] === teacher.name) card.classList.add('selected');
+            
+            card.innerHTML = `
+                <div class="check-badge"><i class="fas fa-check"></i></div>
+                <div class="teacher-img"><i class="${teacher.icon}"></i></div>
+                <h4>${sanitizeInput(teacher.name)}</h4>
+                <div class="subject-name">${sanitizeInput(subjectName)}</div>
+                <div class="desc">${sanitizeInput(teacher.desc)}</div>
+            `;
+            
+            card.addEventListener('click', () => {
+                if (selectedTeachers[subjectKey]) {
+                    document.querySelectorAll('.teacher-card').forEach(oldCard => {
+                        if (oldCard.querySelector('h4')?.innerText === selectedTeachers[subjectKey]) {
+                            oldCard.classList.remove('selected');
+                        }
+                    });
+                }
+                selectedTeachers[subjectKey] = teacher.name;
+                card.classList.add('selected');
+                updateSelectedTeachersDisplay();
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => card.style.transform = '', 150);
+            });
+            return card;
+        }
+
+        // عرض المواد والمدرسين
+        function renderSubjectsWithTeachers(subjectsData, stageKey) {
+            const container = document.getElementById('subjectsContainer');
+            container.innerHTML = '';
+            selectedTeachers = {};
+            updateSelectedTeachersDisplay();
+            
+            for (const [subject, teachers] of Object.entries(subjectsData)) {
+                const subjectKey = `${stageKey}_${subject}`;
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'subject-category';
+                
+                let icon = 'fas fa-book';
+                if (subject.includes('عربية')) icon = 'fas fa-book-open';
+                else if (subject.includes('رياضيات')) icon = 'fas fa-calculator';
+                else if (subject.includes('علوم')) icon = 'fas fa-flask';
+                else if (subject.includes('إنجليزية')) icon = 'fas fa-language';
+                else if (subject.includes('دراسات')) icon = 'fas fa-globe-americas';
+                else if (subject.includes('دينية')) icon = 'fas fa-mosque';
+                else if (subject.includes('فنية')) icon = 'fas fa-paintbrush';
+                else if (subject.includes('حاسب')) icon = 'fas fa-laptop';
+                
+                categoryDiv.innerHTML = `<div class="subject-header"><i class="${icon}"></i><h3>📖 ${subject}</h3></div><div class="teachers-grid" id="grid-${subjectKey.replace(/\s/g, '')}"></div>`;
+                container.appendChild(categoryDiv);
+                
+                const grid = categoryDiv.querySelector('.teachers-grid');
+                teachers.forEach(teacher => grid.appendChild(createTeacherCard(teacher, subject, subjectKey)));
+            }
+        }
+
+        // أحداث الأزرار
+        const btnPrimary = document.getElementById('btnPrimary');
+        const btnPrep = document.getElementById('btnPrep');
+
+        btnPrimary.addEventListener('click', () => {
+            currentStage = 'primary';
+            renderSubjectsWithTeachers(primarySubjects, 'primary');
+            btnPrimary.classList.add('active');
+            btnPrep.classList.remove('active');
+            document.getElementById('teachersArea').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        btnPrep.addEventListener('click', () => {
+            currentStage = 'prep';
+            renderSubjectsWithTeachers(prepSubjects, 'prep');
+            btnPrep.classList.add('active');
+            btnPrimary.classList.remove('active');
+            document.getElementById('teachersArea').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // العرض الافتراضي
+        renderSubjectsWithTeachers(primarySubjects, 'primary');
+        btnPrimary.classList.add('active');
+
+        // نموذج التسجيل مع الحماية
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (isSubmitting) {
+                alert("❌ جاري معالجة طلبك، يرجى الانتظار...");
+                return;
+            }
+            
+            if (!canSubmit()) {
+                alert("❌ لقد تجاوزت الحد المسموح من المحاولات. يرجى المحاولة بعد دقيقة.");
+                return;
+            }
+            
+            isSubmitting = true;
+            
+            const name = document.getElementById('studentName').value.trim();
+            const phone = document.getElementById('studentPhone').value.trim();
+            const grade = document.getElementById('gradeLevel').value;
+            
+            if (!name || !phone || !grade) {
+                alert("❌ يرجى إدخال جميع البيانات.");
+                isSubmitting = false;
+                return;
+            }
+            
+            if (!validateName(name)) {
+                alert("❌ الاسم يجب أن يحتوي على أحرف عربية فقط (3-50 حرف).");
+                isSubmitting = false;
+                return;
+            }
+            
+            if (!validatePhone(phone)) {
+                alert("❌ رقم الهاتف غير صحيح. يجب أن يكون رقم مصري صحيح (مثال: 01234567890).");
+                isSubmitting = false;
+                return;
+            }
+            
+            const selectedCount = Object.keys(selectedTeachers).length;
+            if (selectedCount === 0) {
+                alert("❌ يرجى اختيار المدرسين أولاً! اختر مدرس واحد على الأقل.");
+                isSubmitting = false;
+                return;
+            }
+            
+            const cleanName = sanitizeInput(name);
+            const cleanPhone = sanitizeInput(phone);
+            
+            let teachersMessage = "";
+            for (const [subject, teacherName] of Object.entries(selectedTeachers)) {
+                teachersMessage += `\n📚 ${subject.replace(/^[^_]+_/, '')}: ${sanitizeInput(teacherName)}`;
+            }
+            
+            alert(`✅ تم استلام طلبك بنجاح يا أستاذ/ ${cleanName}!\n\nالمرحلة: ${grade}\nرقم التواصل: ${cleanPhone}\n\nالمدرسون الذين اخترتهم:${teachersMessage}\n\nسيتم التواصل معك خلال 24 ساعة.`);
+            
+            this.reset();
+            selectedTeachers = {};
+            updateSelectedTeachersDisplay();
+            if (currentStage === 'primary') {
+                renderSubjectsWithTeachers(primarySubjects, 'primary');
+            } else {
+                renderSubjectsWithTeachers(prepSubjects, 'prep');
+            }
+            
+            isSubmitting = false;
+        });
+
+        // منع النقر بزر الماوس الأيمن
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // منع اختصارات أدوات المطور
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+        
+        // تأثير الهيدر عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.style.background = window.scrollY > 60 ? "rgba(10, 10, 42, 0.98)" : "rgba(10, 10, 42, 0.95)";
+        });
+    </script>
+</body>
+</html>
